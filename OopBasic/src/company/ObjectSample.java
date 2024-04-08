@@ -4,15 +4,15 @@ public class ObjectSample {
 
     public static void main(String[] args) {
         // インスタンスの作成
-        var department = new Department("営業部", "xx", 1000000);
-        var employee = new Employee("鈴木",department,"課長",100);
+        var salesdepartment = new Department("営業部", "xx", 1000000);
+        Employee sales = new Sales("鈴木",salesdepartment,"課長",100);
         
         // インスタンスメソッドの呼び出し
-        employee.report(); //引数のないreport()メソッドの呼び出し
-        employee.report(2); //引数を持つreport(times)メソッドの呼び出し
-        employee.joinMeeting();
+        sales.report(); //引数のないreport()メソッドの呼び出し
+        sales.report(2); //引数を持つreport(times)メソッドの呼び出し
+        sales.joinMeeting();
         
-        //1行開ける
+        //1行空ける
         System.out.println("");
         
         //インスタンスの作成
@@ -24,6 +24,9 @@ public class ObjectSample {
         engineer.joinMeeting();
         engineer.developSoftware();
         
+        //1行空ける
+        System.out.println("");
+        
         //ポリモーフィズムの確認
         Employee projectManager = new Engineer("佐藤", devDepartment, "PM", 99, "Java");
         
@@ -34,7 +37,17 @@ public class ObjectSample {
             //developSoftwareメソッドを呼び出す
             ((Engineer)projectManager).developSoftware();
         }
-
-    }
+        
+        //1行空ける
+        System.out.println("");
+        
+        //アルバイトインスタンスの作成
+        var parttimeWorker = new ParttimeWorker("太田",salesdepartment);
+        
+        ((Workable)sales).work();
+        ((Workable)engineer).work();
+        ((Workable)projectManager).work();
+        ((Workable)parttimeWorker).work();
+        }
 
 }
